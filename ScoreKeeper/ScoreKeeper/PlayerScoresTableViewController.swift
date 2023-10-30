@@ -49,8 +49,8 @@ class PlayerScoresTableViewController: UITableViewController {
         if editingStyle == .delete {
             players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            Player.saveFromFiles(player: players)
         }
+        Player.saveToFile(player: players)
     }
 
 }
@@ -60,17 +60,18 @@ extension PlayerScoresTableViewController: AddPlayerDelegate {
     func addPlayer(_ playerName: String, _ playerScore: Int) {
         players.append(Player(name: playerName, score: playerScore))
         tableView.reloadData()
-        Player.saveFromFiles(player: players)
+        Player.saveToFile(player: players)
     }
 }
 
 extension PlayerScoresTableViewController: ChangeScoreDelegate {
     func playerUpdated(player: Player?) {
-        if let row = players.firstIndex(where: { $0.id == player?.id }) {
-            players[row] = player!
+        guard let player else { return }
+        if let row = players.firstIndex(of: player) {
+            players[row] = player
         }
         tableView.reloadData()
-        Player.saveFromFiles(player: players)
+        Player.saveToFile(player: players)
     }
     
 }

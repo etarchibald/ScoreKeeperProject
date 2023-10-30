@@ -30,7 +30,7 @@ struct Player: Equatable, Comparable, Codable {
         lhs.score < rhs.score
     }
     
-    static func saveFromFiles(player: [Player]) {
+    static func saveToFile(player: [Player]) {
         let jsonEncoder = JSONEncoder()
         let encoded = try? jsonEncoder.encode(player)
         try? encoded?.write(to: archiveURL)
