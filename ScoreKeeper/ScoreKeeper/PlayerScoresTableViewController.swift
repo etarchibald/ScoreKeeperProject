@@ -17,8 +17,7 @@ class PlayerScoresTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        players.append(Player(name: "Player 1", score: 0))
+        players = Player.loadFromFiles()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,7 +27,7 @@ class PlayerScoresTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        return sortedPlayers.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,6 +40,18 @@ class PlayerScoresTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            players.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            Player.saveFromFiles(player: players)
+        }
+    }
 
 }
 
@@ -49,15 +60,17 @@ extension PlayerScoresTableViewController: AddPlayerDelegate {
     func addPlayer(_ playerName: String, _ playerScore: Int) {
         players.append(Player(name: playerName, score: playerScore))
         tableView.reloadData()
+        Player.saveFromFiles(player: players)
     }
 }
 
 extension PlayerScoresTableViewController: ChangeScoreDelegate {
     func playerUpdated(player: Player?) {
-        if let row = players.firstIndex(where: {$0.id == player?.id }) {
+        if let row = players.firstIndex(where: { $0.id == player?.id }) {
             players[row] = player!
         }
         tableView.reloadData()
+        Player.saveFromFiles(player: players)
     }
     
 }

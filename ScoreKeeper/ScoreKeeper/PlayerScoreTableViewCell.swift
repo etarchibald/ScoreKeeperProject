@@ -20,6 +20,7 @@ class PlayerScoreTableViewCell: UITableViewCell {
     @IBOutlet weak var playerScoreLabel: UILabel!
     
     var delegate: ChangeScoreDelegate?
+    
     private var player: Player?
     
     func update(with player: Player) {

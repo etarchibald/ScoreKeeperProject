@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-struct Player: Equatable, Comparable {
+var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+var archiveURL = documentDirectory.appendingPathExtension("players").appendingPathExtension("json")
+
+struct Player: Equatable, Comparable, Codable {
     var id: String
     var name: String
     var score: Int
@@ -26,4 +29,20 @@ struct Player: Equatable, Comparable {
     static func <(lhs: Player, rhs: Player) -> Bool {
         lhs.score < rhs.score
     }
+    
+    static func saveFromFiles(player: [Player]) {
+        let jsonEncoder = JSONEncoder()
+        let encoded = try? jsonEncoder.encode(player)
+        try? encoded?.write(to: archiveURL)
+    }
+    
+    static func loadFromFiles() -> [Player] {
+        let jsonDecoder = JSONDecoder()
+        if let retrived = try? Data(contentsOf: archiveURL), let decoded = try? jsonDecoder.decode([Player].self, from: retrived) {
+            return decoded
+        }
+        return []
+    }
+    
+    
 }
