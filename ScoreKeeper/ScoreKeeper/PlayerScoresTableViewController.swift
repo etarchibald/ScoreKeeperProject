@@ -14,11 +14,11 @@ class PlayerScoresTableViewController: UITableViewController {
     var sortedPlayers: [Player] {
         players.sorted(by: >)
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        players.append(Player(name: "Player 1", score: 3))
+        players.append(Player(name: "Player 1", score: 0))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,12 +33,12 @@ class PlayerScoresTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerScoreCard", for: indexPath) as! PlayerScoreTableViewCell
+        
+        cell.delegate = self
 
         let player = sortedPlayers[indexPath.row]
+        cell.update(with: player)
         
-        cell.playerNameLabel.text = player.name
-        cell.playerScoreLabel.text = String(player.score)
-
         return cell
     }
 
@@ -53,8 +53,11 @@ extension PlayerScoresTableViewController: AddPlayerDelegate {
 }
 
 extension PlayerScoresTableViewController: ChangeScoreDelegate {
-    func changeScore(_ score: Int) {
-        
+    func playerUpdated(player: Player?) {
+        if let row = players.firstIndex(where: {$0.id == player?.id }) {
+            players[row] = player!
+        }
         tableView.reloadData()
     }
+    
 }

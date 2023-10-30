@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ChangeScoreDelegate {
-    func changeScore(_ score: Int)
+    func playerUpdated(player: Player?)
 }
 
 class PlayerScoreTableViewCell: UITableViewCell {
@@ -20,46 +20,20 @@ class PlayerScoreTableViewCell: UITableViewCell {
     @IBOutlet weak var playerScoreLabel: UILabel!
     
     var delegate: ChangeScoreDelegate?
+    private var player: Player?
     
-    var index = 1
+    func update(with player: Player) {
+        self.player = player
+        playerNameLabel.text = player.name
+        playerScoreLabel.text = String(player.score)
+        playerStepper.value = Double(player.score)
+    }
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
-        
-        var startingScore = Int(playerScoreLabel.text ?? "0")
-        
-//        playerStepper.value = 1
-//
-//        var score = Int(playerScoreLabel.text!)
-//
-//        if index == Int(playerStepper.value) {
-//            score = Int(score!) + Int(playerStepper.value)
-//            index += 1
-//        } else if index != Int(playerStepper.value) {
-//            score = Int(score!) - Int(playerStepper.value)
-//            index -= 1
-//        }
-//
-//        playerScoreLabel.text = String(score!)
-//
-//        print(index)
-//        print(playerStepper.value)
-//        print(score)
-        
-        playerScoreLabel.text = String(Int(sender.value))
+        let newScoreInt = Int(sender.value)
+        playerScoreLabel.text = String(newScoreInt)
+        player?.score = newScoreInt
+        delegate?.playerUpdated(player: player)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.playerStepper.value = Double(playerScoreLabel.text!)!
-        stepperPressed(playerStepper!)
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
