@@ -7,18 +7,25 @@
 
 import UIKit
 
+protocol AddGameDelegate {
+    func addGame(_ game: Game)
+}
+
 class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var addPlayerButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sortPlayersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var whoWinsSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var titleLabel: UITextField!
     
     var players = [Player]()
     
     var sortedPlayers: [Player] {
         players.sorted(by: >)
     }
+    
+    var delegate: AddGameDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +45,12 @@ class GameDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        guard let title = titleLabel.text else { return }
+        
+        let currentWinner = sortedPlayers.first
+        
+        delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers))
+        
         self.navigationController?.popViewController(animated: true)
     }
     

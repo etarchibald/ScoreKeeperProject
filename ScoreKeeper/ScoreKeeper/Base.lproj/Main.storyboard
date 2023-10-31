@@ -98,13 +98,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort players by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEc-dK-VjS">
-                                <rect key="frame" x="16" y="145" width="119" height="21"/>
+                                <rect key="frame" x="16" y="166" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OkI-jE-Eks">
-                                <rect key="frame" x="16" y="174" width="228" height="32"/>
+                                <rect key="frame" x="16" y="195" width="228" height="32"/>
                                 <segments>
                                     <segment title="Highest Score"/>
                                     <segment title="Lowest Score"/>
@@ -223,10 +223,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="yof-BF-rFX"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of Game" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUO-dA-vHu">
+                                <rect key="frame" x="16" y="111" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lZp-FR-bsM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="tUO-dA-vHu" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" constant="16" id="1Hn-6N-vrg"/>
                             <constraint firstItem="s6x-N4-nht" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="4iT-qM-fc8"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" id="D3E-Am-Z9F"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="top" secondItem="OuQ-Ao-xVU" secondAttribute="bottom" constant="8" symbolic="YES" id="D7O-BV-2K5"/>
@@ -234,16 +240,18 @@
                             <constraint firstItem="lZp-FR-bsM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KEc-dK-VjS" secondAttribute="trailing" symbolic="YES" id="M9h-IL-9eN"/>
                             <constraint firstItem="lZp-FR-bsM" firstAttribute="bottom" secondItem="s6x-N4-nht" secondAttribute="bottom" constant="11" id="OQc-0k-FY1"/>
                             <constraint firstItem="1fQ-XG-SSU" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" constant="16" id="RhO-a7-eDn"/>
+                            <constraint firstItem="lZp-FR-bsM" firstAttribute="trailing" secondItem="tUO-dA-vHu" secondAttribute="trailing" constant="16" id="SY4-L5-4Co"/>
                             <constraint firstItem="s6x-N4-nht" firstAttribute="top" secondItem="Pyh-rJ-Rdb" secondAttribute="bottom" constant="14" id="VFQ-WO-E0A"/>
                             <constraint firstItem="OuQ-Ao-xVU" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="Xqw-lg-Xaa"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="bWz-WM-jYF"/>
                             <constraint firstItem="OkI-jE-Eks" firstAttribute="top" secondItem="KEc-dK-VjS" secondAttribute="bottom" constant="8" symbolic="YES" id="cLG-7g-4Sz"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="leading" secondItem="KEc-dK-VjS" secondAttribute="leading" id="e6Z-mH-B8j"/>
+                            <constraint firstItem="tUO-dA-vHu" firstAttribute="top" secondItem="lZp-FR-bsM" secondAttribute="top" constant="8" id="f59-DH-ryk"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="top" secondItem="Zbl-up-DGF" secondAttribute="top" constant="234" id="fKW-2i-xMr"/>
                             <constraint firstItem="1fQ-XG-SSU" firstAttribute="top" secondItem="dWj-wP-z3U" secondAttribute="bottom" constant="8" symbolic="YES" id="oxp-cu-mg9"/>
                             <constraint firstItem="OuQ-Ao-xVU" firstAttribute="top" secondItem="1fQ-XG-SSU" secondAttribute="bottom" constant="27" id="pRr-sp-7ct"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="trailing" secondItem="lZp-FR-bsM" secondAttribute="trailing" id="qfX-gH-LwZ"/>
-                            <constraint firstItem="dWj-wP-z3U" firstAttribute="top" secondItem="OkI-jE-Eks" secondAttribute="bottom" constant="29" id="r0d-j3-4le"/>
+                            <constraint firstItem="dWj-wP-z3U" firstAttribute="top" secondItem="OkI-jE-Eks" secondAttribute="bottom" constant="8" id="r0d-j3-4le"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="leading" secondItem="OkI-jE-Eks" secondAttribute="leading" id="tpX-gI-KVq"/>
                         </constraints>
                     </view>
@@ -258,12 +266,13 @@
                         <outlet property="addPlayerButton" destination="s6x-N4-nht" id="CXv-a6-E7T"/>
                         <outlet property="sortPlayersSegmentedControl" destination="OkI-jE-Eks" id="MT2-C0-TQP"/>
                         <outlet property="tableView" destination="Pyh-rJ-Rdb" id="8Kv-AH-ioK"/>
+                        <outlet property="titleLabel" destination="tUO-dA-vHu" id="EeR-91-akU"/>
                         <outlet property="whoWinsSegmentedControl" destination="1fQ-XG-SSU" id="MCW-wH-UCB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGz-ho-zag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="-675"/>
+            <point key="canvasLocation" x="907.63358778625945" y="-675.35211267605632"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NGy-Zm-aOs">
