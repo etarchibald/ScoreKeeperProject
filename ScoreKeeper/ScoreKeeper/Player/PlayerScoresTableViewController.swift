@@ -73,5 +73,4 @@ extension PlayerScoresTableViewController: ChangeScoreDelegate {
         tableView.reloadData()
         Player.saveToFile(player: players)
     }
-    
 }
