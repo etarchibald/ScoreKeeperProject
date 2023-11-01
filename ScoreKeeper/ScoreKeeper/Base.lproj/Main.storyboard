@@ -227,6 +227,9 @@
                                 <rect key="frame" x="16" y="111" width="361" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleTextFieldChanged:" destination="Ayx-TH-WLM" eventType="editingChanged" id="2vg-8y-gep"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lZp-FR-bsM"/>
@@ -264,6 +267,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPlayerButton" destination="s6x-N4-nht" id="CXv-a6-E7T"/>
+                        <outlet property="saveBarButton" destination="0aK-1L-INU" id="5CZ-vn-QkX"/>
                         <outlet property="sortPlayersSegmentedControl" destination="OkI-jE-Eks" id="MT2-C0-TQP"/>
                         <outlet property="tableView" destination="Pyh-rJ-Rdb" id="8Kv-AH-ioK"/>
                         <outlet property="titleLabel" destination="tUO-dA-vHu" id="EeR-91-akU"/>

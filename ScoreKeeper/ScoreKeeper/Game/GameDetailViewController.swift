@@ -18,36 +18,114 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var sortPlayersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var whoWinsSegmentedControl: UISegmentedControl!
     @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
-    var players = [Player]()
+    var sortedPlayers = [Player]()
     
-    var sortedPlayers: [Player] {
-        players.sorted(by: >)
-    }
+    var sortingByLargest = true
+    
+    var greatestIsTheWinner = true
     
     var delegate: AddGameDelegate?
+    
+    func sortMyPlayers() {
+        if sortingByLargest {
+            sortedPlayers = sortedPlayers.sorted(by: >)
+            tableView.reloadData()
+//            reorderCellsBasedOnDataSource()
+        } else {
+            sortedPlayers = sortedPlayers.sorted(by: <)
+            tableView.reloadData()
+//            reorderCellsBasedOnDataSource()
+        }
+    }
+    
+    func updateSaveButtonState() {
+        if sortedPlayers.isEmpty && ((titleLabel.text?.isEmpty) != nil) {
+            saveBarButton.isEnabled = false
+        } else {
+            saveBarButton.isEnabled = true
+        }
+    }
+    
+    func reorderCellsBasedOnDataSource() {
+            // Store the old order
+            let oldOrder = sortedPlayers
+            // Sort the data source based on the updated property
+            sortedPlayers.sort(by: { $0.score < $1.score })
+            // Animate the changes
+            tableView.beginUpdates()
+            for (oldIndex, item) in oldOrder.enumerated() {
+                if let newIndex = sortedPlayers.firstIndex(where: { $0.id == item.id }) {
+                    if oldIndex != newIndex {
+                        tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
+                    }
+                }
+            }
+            tableView.endUpdates()
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        players.append(Player(name: "Player John", score: 9))
+        sortedPlayers.append(Player(name: "Player John", score: 9))
+        sortedPlayers.append(Player(name: "John Bloodborne", score: 10))
+        
+        updateSaveButtonState()
+        sortMyPlayers()
 
         tableView.dataSource = self
         tableView.delegate = self
     }
     
+    @IBAction func titleTextFieldChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
     @IBAction func sortPlayersBySegmented(_ sender: UISegmentedControl) {
-        print("Sorted Players by has been changed to \(sender)")
+        switch sortPlayersSegmentedControl.selectedSegmentIndex {
+        case 0:
+            sortedPlayers = sortedPlayers.sorted(by: >)
+            sortingByLargest = true
+            sortMyPlayers()
+        case 1:
+            sortedPlayers = sortedPlayers.sorted(by: <)
+            sortingByLargest = false
+            sortMyPlayers()
+        default:
+            break;
+        }
     }
     
     @IBAction func whoWinsSegmented(_ sender: UISegmentedControl) {
-        print("Who Wins has been changed to \(sender)")
+        switch whoWinsSegmentedControl.selectedSegmentIndex {
+        case 0:
+            greatestIsTheWinner = true
+        case 1:
+            greatestIsTheWinner = false
+        default:
+            break;
+        }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         guard let title = titleLabel.text else { return }
         
-        let currentWinner = sortedPlayers.first
+        var currentWinner: Player?
+        
+        if greatestIsTheWinner {
+            if sortingByLargest {
+                currentWinner = sortedPlayers.first
+            } else {
+                currentWinner = sortedPlayers.last
+            }
+        } else {
+            if sortingByLargest {
+                currentWinner = sortedPlayers.last
+            } else {
+                currentWinner = sortedPlayers.first
+            }
+        }
         
         delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers))
         
@@ -80,10 +158,10 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            players.remove(at: indexPath.row)
+            sortedPlayers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        Player.saveToFile(player: players)
+        Player.saveToFile(player: sortedPlayers)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,17 +170,19 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     }
     
     func addPlayer(_ playerName: String, _ playerScore: Int) {
-        players.append(Player(name: playerName, score: playerScore))
-        tableView.reloadData()
-        Player.saveToFile(player: players)
+        sortedPlayers.append(Player(name: playerName, score: playerScore))
+        sortMyPlayers()
+        updateSaveButtonState()
+        Player.saveToFile(player: sortedPlayers)
     }
     
     func playerUpdated(player: Player?) {
         guard let player else { return }
-        if let row = players.firstIndex(of: player) {
-            players[row] = player
+        if let row = sortedPlayers.firstIndex(of: player) {
+            sortedPlayers[row] = player
         }
-        tableView.reloadData()
-        Player.saveToFile(player: players)
+        sortMyPlayers()
+        updateSaveButtonState()
+        Player.saveToFile(player: sortedPlayers)
     }
 }
