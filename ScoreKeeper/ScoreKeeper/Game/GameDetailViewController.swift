@@ -21,23 +21,36 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
     var sortedPlayers = [Player]()
-    
     var sortingByLargest = true
-    
     var greatestIsTheWinner = true
-    
     var delegate: AddGameDelegate?
     
     func sortMyPlayers() {
         if sortingByLargest {
-            sortedPlayers = sortedPlayers.sorted(by: >)
-            tableView.reloadData()
-//            reorderCellsBasedOnDataSource()
+            reorderCellsBasedOnDataSource(true)
         } else {
-            sortedPlayers = sortedPlayers.sorted(by: <)
-            tableView.reloadData()
-//            reorderCellsBasedOnDataSource()
+            reorderCellsBasedOnDataSource(false)
         }
+    }
+    
+    func reorderCellsBasedOnDataSource(_ greaterThanSorting: Bool) {
+        let oldOrder = sortedPlayers
+        
+        if greaterThanSorting {
+            sortedPlayers.sort(by: { $0.score > $1.score })
+        } else {
+            sortedPlayers.sort(by: {$0.score < $1.score })
+        }
+        
+        tableView.beginUpdates()
+        for (oldIndex, item) in oldOrder.enumerated() {
+            if let newIndex = sortedPlayers.firstIndex(where: { $0.id == item.id }) {
+                if oldIndex != newIndex {
+                    tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
+                }
+            }
+        }
+        tableView.endUpdates()
     }
     
     func updateSaveButtonState() {
@@ -47,23 +60,6 @@ class GameDetailViewController: UIViewController {
             saveBarButton.isEnabled = true
         }
     }
-    
-    func reorderCellsBasedOnDataSource() {
-            // Store the old order
-            let oldOrder = sortedPlayers
-            // Sort the data source based on the updated property
-            sortedPlayers.sort(by: { $0.score < $1.score })
-            // Animate the changes
-            tableView.beginUpdates()
-            for (oldIndex, item) in oldOrder.enumerated() {
-                if let newIndex = sortedPlayers.firstIndex(where: { $0.id == item.id }) {
-                    if oldIndex != newIndex {
-                        tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
-                    }
-                }
-            }
-            tableView.endUpdates()
-        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +81,11 @@ class GameDetailViewController: UIViewController {
     @IBAction func sortPlayersBySegmented(_ sender: UISegmentedControl) {
         switch sortPlayersSegmentedControl.selectedSegmentIndex {
         case 0:
-            sortedPlayers = sortedPlayers.sorted(by: >)
+            reorderCellsBasedOnDataSource(true)
             sortingByLargest = true
             sortMyPlayers()
         case 1:
-            sortedPlayers = sortedPlayers.sorted(by: <)
+            reorderCellsBasedOnDataSource(false)
             sortingByLargest = false
             sortMyPlayers()
         default:
