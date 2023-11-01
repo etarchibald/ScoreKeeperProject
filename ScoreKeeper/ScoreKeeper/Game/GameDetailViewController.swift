@@ -54,10 +54,9 @@ class GameDetailViewController: UIViewController {
     }
     
     func updateSaveButtonState() {
-        if sortedPlayers.isEmpty && ((titleLabel.text?.isEmpty) != nil) {
-            saveBarButton.isEnabled = false
-        } else {
-            saveBarButton.isEnabled = true
+        let shouldEnableSaveButton = titleLabel.text?.isEmpty == false
+        if sortedPlayers.count == 0 {
+            saveBarButton.isEnabled = shouldEnableSaveButton
         }
     }
     
