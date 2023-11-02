@@ -408,7 +408,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PO-wn-5fg">
                                 <rect key="frame" x="125.33333333333333" y="222" width="142.33333333333337" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Lr9-M7-Vyz"/>
                                     <constraint firstAttribute="width" constant="142.33000000000001" id="zFN-nj-obh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -418,7 +417,6 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLk-qK-HrA">
                                 <rect key="frame" x="63.666666666666657" y="270" width="266" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ZlP-kK-gKr"/>
                                     <constraint firstAttribute="width" constant="266" id="sKv-n1-4hv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -427,7 +425,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e65-UF-6Kv">
                                 <rect key="frame" x="119" y="396" width="155" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hII-LR-9pS"/>
                                     <constraint firstAttribute="width" constant="155" id="juJ-ej-5AG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -435,18 +432,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHv-0f-ZOD">
-                                <rect key="frame" x="63.666666666666657" y="444" width="266" height="34"/>
+                                <rect key="frame" x="63.666666666666657" y="392" width="266" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="90k-Ra-C0k"/>
                                     <constraint firstAttribute="width" constant="266" id="q16-IZ-wdI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMz-jn-lqr">
-                                <rect key="frame" x="39.666666666666657" y="566" width="314" height="35"/>
+                                <rect key="frame" x="39.666666666666657" y="514" width="314" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="1cw-LS-nHL"/>
                                     <constraint firstAttribute="width" constant="314" id="VlC-Ay-QWY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
@@ -459,17 +454,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xHv-0f-ZOD" firstAttribute="bottom" secondItem="e65-UF-6Kv" secondAttribute="bottom" id="3Ao-4v-wmu"/>
                             <constraint firstItem="xHv-0f-ZOD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4lZ-Uj-bgu"/>
                             <constraint firstItem="zMz-jn-lqr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4ro-5E-1Yo"/>
-                            <constraint firstItem="9PO-wn-5fg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="119" id="BgC-10-CHX"/>
-                            <constraint firstItem="zMz-jn-lqr" firstAttribute="top" secondItem="xHv-0f-ZOD" secondAttribute="bottom" constant="88" id="HKe-dZ-jth"/>
-                            <constraint firstItem="xHv-0f-ZOD" firstAttribute="top" secondItem="e65-UF-6Kv" secondAttribute="bottom" constant="18" id="NUF-nR-Kld"/>
+                            <constraint firstItem="zMz-jn-lqr" firstAttribute="top" secondItem="e65-UF-6Kv" secondAttribute="bottom" constant="88" id="CWR-8B-GUR"/>
+                            <constraint firstItem="9PO-wn-5fg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="119" id="Chg-7r-Ne0"/>
+                            <constraint firstItem="xHv-0f-ZOD" firstAttribute="top" secondItem="sLk-qK-HrA" secondAttribute="bottom" constant="88" id="F1R-wy-UWU"/>
+                            <constraint firstItem="sLk-qK-HrA" firstAttribute="top" secondItem="9PO-wn-5fg" secondAttribute="bottom" constant="18" id="Jdv-9e-ozH"/>
                             <constraint firstItem="e65-UF-6Kv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bRV-wX-bWh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zMz-jn-lqr" secondAttribute="bottom" constant="217" id="eaI-RW-Wfq"/>
                             <constraint firstItem="sLk-qK-HrA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fJD-3J-q3p"/>
-                            <constraint firstItem="sLk-qK-HrA" firstAttribute="top" secondItem="9PO-wn-5fg" secondAttribute="bottom" constant="18" id="v0b-Ve-BNO"/>
                             <constraint firstItem="9PO-wn-5fg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vrT-hr-ksb"/>
-                            <constraint firstItem="e65-UF-6Kv" firstAttribute="top" secondItem="sLk-qK-HrA" secondAttribute="bottom" constant="92" id="w3t-md-hGe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Player" id="hEN-cE-IcH"/>

@@ -19,13 +19,13 @@ struct Game: Codable {
     var areWeSortingByLargest: Bool
     var isLargestWinning: Bool
     
-    static func saveToDos(_ game: [Game]) {
+    static func saveGame(_ game: [Game]) {
             let propertyListEncoder = JSONEncoder()
             let encoded = try? propertyListEncoder.encode(game)
             try? encoded?.write(to: archiveURL)
         }
         
-    static func LoadFromFiles() -> [Game]? {
+    static func LoadFromFiles() -> [Game] {
         let propertyListDecoder = JSONDecoder()
         if let retrived = try? Data(contentsOf: archiveURL),
             let decoded = try? propertyListDecoder.decode([Game].self, from: retrived) {

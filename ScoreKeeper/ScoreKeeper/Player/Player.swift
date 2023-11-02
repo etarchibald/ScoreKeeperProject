@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Player: Equatable, Comparable {
+struct Player: Equatable, Comparable, Codable {
     var id: String
     var name: String
     var score: Int

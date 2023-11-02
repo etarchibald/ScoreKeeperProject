@@ -17,7 +17,6 @@ class PlayerScoresTableViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        players = Player.loadFromFiles()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,7 +49,6 @@ class PlayerScoresTableViewController: UITableViewController {
             players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        Player.saveToFile(player: players)
     }
 
 }
@@ -60,7 +58,6 @@ extension PlayerScoresTableViewController: AddPlayerDelegate {
     func addPlayer(_ playerName: String, _ playerScore: Int) {
         players.append(Player(name: playerName, score: playerScore))
         tableView.reloadData()
-        Player.saveToFile(player: players)
     }
 }
 
@@ -71,6 +68,5 @@ extension PlayerScoresTableViewController: ChangeScoreDelegate {
             players[row] = player
         }
         tableView.reloadData()
-        Player.saveToFile(player: players)
     }
 }

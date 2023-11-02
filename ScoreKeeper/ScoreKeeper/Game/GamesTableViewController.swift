@@ -14,7 +14,7 @@ class GamesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        games.append(Game(title: "Example", currentWinner: "John Doom", players: [Player(name: "John Doom", score: 3), Player(name: "Elden John", score: 8)], areWeSortingByLargest: false, isLargestWinning: false))
+        games = Game.LoadFromFiles()
         
     }
 
@@ -68,8 +68,10 @@ extension GamesTableViewController: AddGameDelegate {
     func addGame(_ game: Game) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             games[selectedIndexPath.row] = game
+            Game.saveGame(games)
         } else {
             self.games.append(game)
+            Game.saveGame(games)
         }
         tableView.reloadData()
     }
