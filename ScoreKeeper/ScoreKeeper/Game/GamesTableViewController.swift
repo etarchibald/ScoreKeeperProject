@@ -14,9 +14,22 @@ class GamesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        games.append(Game(title: "Example", currentWinner: "Example", players: [Player(name: "John", score: 12)]))
+        
     }
 
-    // MARK: - Table view data source
+    @IBSegueAction func addGame(_ coder: NSCoder, sender: Any?) -> GameDetailViewController? {
+        return GameDetailViewController(coder: coder, game: nil)
+    }
+    
+    @IBSegueAction func editGame(_ coder: NSCoder, sender: Any?) -> GameDetailViewController? {
+        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return nil }
+        
+        let game = games[indexPath.row]
+        
+        return GameDetailViewController(coder: coder, game: game)
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -53,7 +66,11 @@ class GamesTableViewController: UITableViewController {
 
 extension GamesTableViewController: AddGameDelegate {
     func addGame(_ game: Game) {
-        self.games.append(game)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            games[selectedIndexPath.row] = game
+        } else {
+            self.games.append(game)
+        }
         tableView.reloadData()
     }
 }

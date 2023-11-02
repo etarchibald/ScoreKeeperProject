@@ -25,6 +25,25 @@ class GameDetailViewController: UIViewController {
     var greatestIsTheWinner = true
     var delegate: AddGameDelegate?
     
+    var game: Game?
+    
+    init?(coder: NSCoder, game: Game?) {
+        self.game = game
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateView() {
+        guard let game = game else { return }
+        
+        titleLabel.text = game.title
+        sortedPlayers = game.players
+        
+    }
+    
     func sortMyPlayers() {
         if sortingByLargest {
             reorderCellsBasedOnDataSource(true)
@@ -70,8 +89,9 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        updateSaveButtonState()
-//        sortMyPlayers()
+        updateSaveButtonState()
+        
+        updateView()
 
         tableView.dataSource = self
         tableView.delegate = self

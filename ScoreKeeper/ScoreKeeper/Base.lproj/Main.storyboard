@@ -69,6 +69,7 @@
                                     <outlet property="currentWinnerLabel" destination="hAF-J9-nFh" id="jWa-Ms-2BI"/>
                                     <outlet property="gameImageView" destination="LmW-ou-BjT" id="jGs-qu-tmU"/>
                                     <outlet property="gameTitleLabel" destination="Oyp-TQ-N8j" id="GMO-pD-pHo"/>
+                                    <segue destination="Ayx-TH-WLM" kind="show" destinationCreationSelector="editGame:sender:" id="hzO-5E-IIx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -80,7 +81,7 @@
                     <navigationItem key="navigationItem" title="Games" id="P6P-5g-Rdc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QRC-VK-FZJ">
                             <connections>
-                                <segue destination="Ayx-TH-WLM" kind="show" id="uTz-vw-KuI"/>
+                                <segue destination="Ayx-TH-WLM" kind="show" destinationCreationSelector="addGame:sender:" id="uTz-vw-KuI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -482,6 +483,9 @@
             <point key="canvasLocation" x="1859" y="-675"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uTz-vw-KuI"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="dice.fill" catalog="system" width="128" height="116"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
