@@ -36,38 +36,42 @@ class GameDetailViewController: UIViewController {
     func reorderCellsBasedOnDataSource(_ greaterThanSorting: Bool) {
         let oldOrder = sortedPlayers
         
-        if greaterThanSorting {
-            sortedPlayers.sort(by: { $0.score > $1.score })
-        } else {
-            sortedPlayers.sort(by: {$0.score < $1.score })
-        }
-        
-        tableView.beginUpdates()
-        for (oldIndex, item) in oldOrder.enumerated() {
-            if let newIndex = sortedPlayers.firstIndex(where: { $0.id == item.id }) {
-                if oldIndex != newIndex {
-                    tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
+        if sortedPlayers.count > 1 {
+            tableView.reloadData()
+            
+            if greaterThanSorting {
+                sortedPlayers.sort(by: { $0.score > $1.score })
+            } else {
+                sortedPlayers.sort(by: {$0.score < $1.score })
+            }
+            
+            tableView.beginUpdates()
+            for (oldIndex, item) in oldOrder.enumerated() {
+                if let newIndex = sortedPlayers.firstIndex(where: { $0.id == item.id }) {
+                    if oldIndex != newIndex {
+                        tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
+                    }
                 }
             }
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
         }
-        tableView.endUpdates()
     }
     
     func updateSaveButtonState() {
-        let shouldEnableSaveButton = titleLabel.text?.isEmpty == false
-        if sortedPlayers.count == 0 {
-            saveBarButton.isEnabled = shouldEnableSaveButton
+        if sortedPlayers.count == 0 || titleLabel.text!.isEmpty{
+            saveBarButton.isEnabled = false
+        } else {
+            saveBarButton.isEnabled = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sortedPlayers.append(Player(name: "Player John", score: 9))
-        sortedPlayers.append(Player(name: "John Bloodborne", score: 10))
-        
-        updateSaveButtonState()
-        sortMyPlayers()
+//        updateSaveButtonState()
+//        sortMyPlayers()
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -156,7 +160,7 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
             sortedPlayers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        Player.saveToFile(player: sortedPlayers)
+//        Player.saveToFile(player: sortedPlayers)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -168,7 +172,7 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         sortedPlayers.append(Player(name: playerName, score: playerScore))
         sortMyPlayers()
         updateSaveButtonState()
-        Player.saveToFile(player: sortedPlayers)
+//        Player.saveToFile(player: sortedPlayers)
     }
     
     func playerUpdated(player: Player?) {
@@ -178,6 +182,6 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         }
         sortMyPlayers()
         updateSaveButtonState()
-        Player.saveToFile(player: sortedPlayers)
+//        Player.saveToFile(player: sortedPlayers)
     }
 }
