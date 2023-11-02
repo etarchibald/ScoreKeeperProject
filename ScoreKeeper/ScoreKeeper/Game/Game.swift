@@ -11,4 +11,6 @@ struct Game {
     var title: String
     var currentWinner: String
     var players: [Player]
+    var areWeSortingByLargest: Bool
+    var isLargestWinning: Bool
 }

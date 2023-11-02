@@ -14,7 +14,7 @@ class GamesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        games.append(Game(title: "Example", currentWinner: "Example", players: [Player(name: "John", score: 12)]))
+        games.append(Game(title: "Example", currentWinner: "John Doom", players: [Player(name: "John Doom", score: 3), Player(name: "Elden John", score: 8)], areWeSortingByLargest: false, isLargestWinning: false))
         
     }
 

@@ -42,6 +42,15 @@ class GameDetailViewController: UIViewController {
         titleLabel.text = game.title
         sortedPlayers = game.players
         
+        sortingByLargest = game.areWeSortingByLargest
+        greatestIsTheWinner = game.isLargestWinning
+        
+        sortPlayersSegmentedControl.selectedSegmentIndex = sortingByLargest ? 0 : 1
+        
+        whoWinsSegmentedControl.selectedSegmentIndex = greatestIsTheWinner ? 0 : 1
+        
+        updateSaveButtonState()
+        
     }
     
     func sortMyPlayers() {
@@ -146,7 +155,7 @@ class GameDetailViewController: UIViewController {
             }
         }
         
-        delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers))
+        delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers, areWeSortingByLargest: sortingByLargest, isLargestWinning: greatestIsTheWinner))
         
         self.navigationController?.popViewController(animated: true)
     }
