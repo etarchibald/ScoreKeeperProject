@@ -24,7 +24,6 @@ class GameDetailViewController: UIViewController {
     var sortingByLargest = true
     var greatestIsTheWinner = true
     var delegate: AddGameDelegate?
-    
     var game: Game?
     
     init?(coder: NSCoder, game: Game?) {
@@ -113,11 +112,9 @@ class GameDetailViewController: UIViewController {
     @IBAction func sortPlayersBySegmented(_ sender: UISegmentedControl) {
         switch sortPlayersSegmentedControl.selectedSegmentIndex {
         case 0:
-            reorderCellsBasedOnDataSource(true)
             sortingByLargest = true
             sortMyPlayers()
         case 1:
-            reorderCellsBasedOnDataSource(false)
             sortingByLargest = false
             sortMyPlayers()
         default:
@@ -142,17 +139,9 @@ class GameDetailViewController: UIViewController {
         var currentWinner: Player?
         
         if greatestIsTheWinner {
-            if sortingByLargest {
-                currentWinner = sortedPlayers.first
-            } else {
-                currentWinner = sortedPlayers.last
-            }
+            currentWinner = sortingByLargest ? sortedPlayers.first : sortedPlayers.last
         } else {
-            if sortingByLargest {
-                currentWinner = sortedPlayers.last
-            } else {
-                currentWinner = sortedPlayers.first
-            }
+            currentWinner = sortingByLargest ? sortedPlayers.last : sortedPlayers.first
         }
         
         delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers, areWeSortingByLargest: sortingByLargest, isLargestWinning: greatestIsTheWinner))
@@ -202,7 +191,6 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
             sortedPlayers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-//        Player.saveToFile(player: sortedPlayers)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -218,7 +206,6 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         }
         sortMyPlayers()
         updateSaveButtonState()
-//        Player.saveToFile(player: sortedPlayers)
     }
     
     func playerUpdated(player: Player?) {
@@ -228,6 +215,5 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         }
         sortMyPlayers()
         updateSaveButtonState()
-//        Player.saveToFile(player: sortedPlayers)
     }
 }

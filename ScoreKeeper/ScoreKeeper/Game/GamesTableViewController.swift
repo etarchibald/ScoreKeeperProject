@@ -32,7 +32,6 @@ class GamesTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return games.count
     }
 
@@ -55,6 +54,7 @@ class GamesTableViewController: UITableViewController {
         if editingStyle == .delete {
             games.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            Game.saveGame(games)
         }
     }
     
@@ -70,7 +70,7 @@ extension GamesTableViewController: AddGameDelegate {
             games[selectedIndexPath.row] = game
             Game.saveGame(games)
         } else {
-            self.games.append(game)
+            self.games.insert(game, at: games.startIndex)
             Game.saveGame(games)
         }
         tableView.reloadData()

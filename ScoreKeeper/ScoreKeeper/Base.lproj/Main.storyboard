@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Games-->
+        <!--LET THE GAMES BEGIN!-->
         <scene sceneID="Wse-sF-47j">
             <objects>
                 <tableViewController id="sZ2-kd-wDv" customClass="GamesTableViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="sZ2-kd-wDv" id="gLQ-4b-iL8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Games" id="P6P-5g-Rdc">
+                    <navigationItem key="navigationItem" title="LET THE GAMES BEGIN!" id="P6P-5g-Rdc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QRC-VK-FZJ">
                             <connections>
                                 <segue destination="Ayx-TH-WLM" kind="show" destinationCreationSelector="addGame:sender:" id="uTz-vw-KuI"/>
@@ -296,108 +296,6 @@
             </objects>
             <point key="canvasLocation" x="-1057" y="-675"/>
         </scene>
-        <!--Score Board-->
-        <scene sceneID="xKV-i6-hr1">
-            <objects>
-                <tableViewController id="i3B-jt-ds0" customClass="PlayerScoresTableViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="rQZ-2k-rDV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerScoreCard" rowHeight="129" id="zwr-Iw-uIY" customClass="PlayerScoreTableViewCell" customModule="ScoreKeeper" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="129"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwr-Iw-uIY" id="xij-5S-HhX">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="129"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-dX-pM4">
-                                            <rect key="frame" x="20" y="25" width="80" height="80"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="81.329999999999998" id="2r5-gl-ZZi"/>
-                                                <constraint firstAttribute="width" constant="80" id="z2P-9D-sj1"/>
-                                            </constraints>
-                                            <imageReference key="image" image="person.circle.fill" catalog="system" variableValue="1"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csj-qD-oXj">
-                                            <rect key="frame" x="119" y="11" width="107" height="107"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="107" id="4XY-Ft-Psh"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkQ-2o-6R5">
-                                            <rect key="frame" x="336" y="48.666666666666657" width="37" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="37" id="u5i-q2-Vex"/>
-                                                <constraint firstAttribute="height" constant="32" id="xVA-Y5-SwE"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6vD-xf-lYG">
-                                            <rect key="frame" x="234" y="48.666666666666657" width="94" height="32"/>
-                                            <connections>
-                                                <action selector="stepperPressed:" destination="zwr-Iw-uIY" eventType="valueChanged" id="flY-Nf-Frv"/>
-                                            </connections>
-                                        </stepper>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Csj-qD-oXj" firstAttribute="bottom" secondItem="xij-5S-HhX" secondAttribute="bottomMargin" id="1R6-uV-6Mj"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="6vD-xf-lYG" secondAttribute="bottom" constant="37.329999999999998" id="9ew-G5-CsU"/>
-                                        <constraint firstItem="6vD-xf-lYG" firstAttribute="leading" secondItem="Csj-qD-oXj" secondAttribute="trailing" constant="8" symbolic="YES" id="BRu-G0-k8C"/>
-                                        <constraint firstItem="GkQ-2o-6R5" firstAttribute="centerY" secondItem="xij-5S-HhX" secondAttribute="centerY" id="QZh-rT-J8r"/>
-                                        <constraint firstItem="GkQ-2o-6R5" firstAttribute="leading" secondItem="6vD-xf-lYG" secondAttribute="trailing" constant="8" symbolic="YES" id="RBj-80-0Yp"/>
-                                        <constraint firstItem="3Ga-dX-pM4" firstAttribute="centerY" secondItem="xij-5S-HhX" secondAttribute="centerY" id="Sy4-oc-UQH"/>
-                                        <constraint firstItem="Csj-qD-oXj" firstAttribute="leading" secondItem="3Ga-dX-pM4" secondAttribute="trailing" constant="19" id="VDt-u8-XOY"/>
-                                        <constraint firstItem="Csj-qD-oXj" firstAttribute="top" secondItem="xij-5S-HhX" secondAttribute="topMargin" id="VUl-fd-F8E"/>
-                                        <constraint firstItem="GkQ-2o-6R5" firstAttribute="trailing" secondItem="xij-5S-HhX" secondAttribute="trailingMargin" id="cf1-5u-jVt"/>
-                                        <constraint firstItem="6vD-xf-lYG" firstAttribute="top" secondItem="xij-5S-HhX" secondAttribute="topMargin" constant="37.670000000000002" id="pQV-4F-y0j"/>
-                                        <constraint firstItem="3Ga-dX-pM4" firstAttribute="leading" secondItem="xij-5S-HhX" secondAttribute="leadingMargin" id="wFd-TT-IzV"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="playerImageView" destination="3Ga-dX-pM4" id="LS0-Q5-9Lz"/>
-                                    <outlet property="playerNameLabel" destination="Csj-qD-oXj" id="VjI-b5-BFA"/>
-                                    <outlet property="playerScoreLabel" destination="GkQ-2o-6R5" id="lJN-Jb-0ym"/>
-                                    <outlet property="playerStepper" destination="6vD-xf-lYG" id="5cF-G3-hTH"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="i3B-jt-ds0" id="cKN-BV-jYq"/>
-                            <outlet property="delegate" destination="i3B-jt-ds0" id="C61-Mb-2sy"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Score Board" id="6SM-qb-bsh">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FI5-Gu-7SW"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kEX-s8-dZt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="121" y="6"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="QTb-9J-4vO">
-            <objects>
-                <navigationController id="IoY-yK-joV" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yu-rr-QaP">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="i3B-jt-ds0" kind="relationship" relationship="rootViewController" id="3Il-gG-cKu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sOS-BS-QBs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1091" y="6"/>
-        </scene>
         <!--Add New Player-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -479,7 +377,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZcV-W1-v1q"/>
+        <segue reference="yof-BF-rFX"/>
         <segue reference="uTz-vw-KuI"/>
     </inferredMetricsTieBreakers>
     <resources>
