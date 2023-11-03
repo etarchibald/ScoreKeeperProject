@@ -199,6 +199,7 @@
                                             <outlet property="playerNameLabel" destination="IfZ-de-Pyc" id="GC6-Av-fPQ"/>
                                             <outlet property="playerScoreLabel" destination="pVc-wd-QW6" id="ehb-yu-4ZC"/>
                                             <outlet property="playerStepper" destination="EMI-Fh-8Ry" id="8Qw-lf-a0y"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" destinationCreationSelector="editPlayer:sender:" id="ZcV-W1-v1q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -221,7 +222,7 @@
                                     <color key="titleColor" systemColor="tintColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="yof-BF-rFX"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" destinationCreationSelector="addPlayer:" id="yof-BF-rFX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of Game" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUO-dA-vHu">
@@ -478,6 +479,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ZcV-W1-v1q"/>
         <segue reference="uTz-vw-KuI"/>
     </inferredMetricsTieBreakers>
     <resources>

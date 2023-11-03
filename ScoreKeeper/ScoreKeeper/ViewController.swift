@@ -18,10 +18,28 @@ class ViewController: UIViewController {
     
     var delegate: AddPlayerDelegate?
     
+    var player: Player?
+    
+    required init?(coder: NSCoder, player: Player?) {
+        self.player = player
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateView()
+    }
+    
+    func updateView() {
+        guard let player = player else { return }
+        
+        playerNameTextField.text = player.name
+        currentScoreTextField.text = String(player.score)
     }
 
     @IBAction func saveButtonTapped(_ sender: UIButton) {

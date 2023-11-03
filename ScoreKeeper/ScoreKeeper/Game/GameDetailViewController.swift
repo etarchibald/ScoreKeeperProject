@@ -160,6 +160,19 @@ class GameDetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBSegueAction func addPlayer(_ coder: NSCoder) -> ViewController? {
+        return ViewController(coder: coder, player: nil )
+    }
+    
+    @IBSegueAction func editPlayer(_ coder: NSCoder, sender: Any?) -> ViewController? {
+        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return nil }
+        
+        let player = sortedPlayers[indexPath.row]
+        
+        return ViewController(coder: coder, player: player)
+    }
+    
+    
 }
 
 extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, AddPlayerDelegate, ChangeScoreDelegate {
@@ -198,7 +211,11 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     }
     
     func addPlayer(_ playerName: String, _ playerScore: Int) {
-        sortedPlayers.append(Player(name: playerName, score: playerScore))
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            sortedPlayers[selectedIndexPath.row] = Player(name: playerName, score: playerScore)
+        } else {
+            sortedPlayers.append(Player(name: playerName, score: playerScore))
+        }
         sortMyPlayers()
         updateSaveButtonState()
 //        Player.saveToFile(player: sortedPlayers)
