@@ -18,7 +18,7 @@ class GamesTableViewController: UITableViewController {
         
         games = Game.LoadFromFiles()
         
-        tableView.backgroundView = UIImageView(image: UIImage(named: "pxfuel.com"))
+        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
         
     }
 

@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pxfuel.com")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
         
         savePlayerButton.layer.borderWidth = 5
         savePlayerButton.layer.borderColor = UIColor.black.cgColor

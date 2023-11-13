@@ -97,8 +97,8 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pxfuel.com")!)
-        tableView.backgroundView = UIImageView(image: UIImage(named: "pxfuel.com"))
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
+        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
         
         addPlayerButton.layer.borderWidth = 5
         addPlayerButton.layer.borderColor = UIColor.black.cgColor
