@@ -97,6 +97,13 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pxfuel.com")!)
+        tableView.backgroundView = UIImageView(image: UIImage(named: "pxfuel.com"))
+        
+        addPlayerButton.layer.borderWidth = 5
+        addPlayerButton.layer.borderColor = UIColor.black.cgColor
+        addPlayerButton.layer.cornerRadius = 20
+        
         updateSaveButtonState()
         
         updateView()
@@ -172,6 +179,10 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerScoreCard", for: indexPath) as! PlayerScoreTableViewCell
         
         cell.delegate = self
+        
+        cell.layer.borderWidth = 5
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = 40
         
         let player = sortedPlayers[indexPath.row]
         

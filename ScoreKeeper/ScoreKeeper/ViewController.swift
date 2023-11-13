@@ -14,6 +14,7 @@ protocol AddPlayerDelegate {
 class ViewController: UIViewController {
 
     @IBOutlet weak var playerNameTextField: UITextField!
+    @IBOutlet weak var savePlayerButton: UIButton!
     @IBOutlet weak var currentScoreTextField: UITextField!
     
     var delegate: AddPlayerDelegate?
@@ -32,6 +33,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pxfuel.com")!)
+        
+        savePlayerButton.layer.borderWidth = 5
+        savePlayerButton.layer.borderColor = UIColor.black.cgColor
+        savePlayerButton.layer.cornerRadius = 20
+        
         updateView()
     }
     

@@ -10,11 +10,15 @@ import UIKit
 class GamesTableViewController: UITableViewController {
     
     var games = [Game]()
+    
+    let cellSpacing: CGFloat = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         games = Game.LoadFromFiles()
+        
+        tableView.backgroundView = UIImageView(image: UIImage(named: "pxfuel.com"))
         
     }
 
@@ -41,9 +45,17 @@ class GamesTableViewController: UITableViewController {
 
         let game = games[indexPath.row]
         
+        cell.layer.borderWidth = 5
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.cornerRadius = 40
+        
         cell.update(with: game)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacing
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
