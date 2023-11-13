@@ -160,8 +160,6 @@ class GameDetailViewController: UIViewController {
         
         return ViewController(coder: coder, player: player)
     }
-    
-    
 }
 
 extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, AddPlayerDelegate, ChangeScoreDelegate {
