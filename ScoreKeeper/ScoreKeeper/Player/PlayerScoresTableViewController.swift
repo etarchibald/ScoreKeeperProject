@@ -54,9 +54,8 @@ class PlayerScoresTableViewController: UITableViewController {
 }
 
 extension PlayerScoresTableViewController: AddPlayerDelegate {
-    
     func addPlayer(_ playerName: String, _ playerScore: Int) {
-        players.append(Player(name: playerName, score: playerScore))
+        players.append(Player(name: playerName, score: playerScore, incramentValue: 1))
         tableView.reloadData()
     }
 }

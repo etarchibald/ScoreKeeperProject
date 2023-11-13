@@ -12,11 +12,13 @@ struct Player: Equatable, Comparable, Codable {
     var id: String
     var name: String
     var score: Int
+    var incramentValue: Int
     
-    init(name: String, score: Int) {
+    init(name: String, score: Int, incramentValue: Int) {
         self.id = UUID().uuidString
         self.name = name
         self.score = score
+        self.incramentValue = incramentValue
     }
     
     static func ==(lhs: Player, rhs: Player) -> Bool {

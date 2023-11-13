@@ -31,10 +31,13 @@ class PlayerScoreTableViewCell: UITableViewCell {
         playerNameLabel.text = player.name
         playerScoreLabel.text = String(player.score)
         score = player.score
+        incramentScoreBy = player.incramentValue
+        IncramentTextField.text = String(incramentScoreBy)
     }
     
     @IBAction func incramentValueChanged(_ sender: UITextField) {
         incramentScoreBy = Int(IncramentTextField.text ?? "1") ?? 1
+        player?.incramentValue = incramentScoreBy
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {

@@ -209,9 +209,9 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     
     func addPlayer(_ playerName: String, _ playerScore: Int) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            sortedPlayers[selectedIndexPath.row] = Player(name: playerName, score: playerScore)
+            sortedPlayers[selectedIndexPath.row] = Player(name: playerName, score: playerScore, incramentValue: 1)
         } else {
-            sortedPlayers.append(Player(name: playerName, score: playerScore))
+            sortedPlayers.append(Player(name: playerName, score: playerScore, incramentValue: 1))
         }
         sortMyPlayers()
         updateSaveButtonState()
