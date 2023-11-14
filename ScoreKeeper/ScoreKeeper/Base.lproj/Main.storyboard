@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -242,12 +243,36 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6x-N4-nht">
-                                <rect key="frame" x="35.666666666666657" y="766" width="322" height="41"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of Game" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUO-dA-vHu">
+                                <rect key="frame" x="16" y="111" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="titleTextFieldChanged:" destination="Ayx-TH-WLM" eventType="editingDidEnd" id="Eqg-hr-7kJ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPJ-vY-DRZ">
+                                <rect key="frame" x="217" y="766" width="140" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="bda-X8-0h2"/>
-                                    <constraint firstAttribute="width" constant="322" id="q8e-Ub-RpW"/>
+                                    <constraint firstAttribute="width" constant="140" id="SFq-Hq-eeG"/>
+                                    <constraint firstAttribute="height" constant="41" id="l7d-9j-fpK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Pictures">
+                                    <color key="titleColor" systemColor="tintColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ct6-GZ-0rf" kind="show" destinationCreationSelector="viewPictures:sender:" id="IUi-cg-7zv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6x-N4-nht">
+                                <rect key="frame" x="28" y="766" width="158" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="lJb-KQ-feO"/>
+                                    <constraint firstAttribute="width" constant="158" id="oBT-fJ-XyO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -258,33 +283,28 @@
                                     <segue destination="BYZ-38-t0r" kind="show" destinationCreationSelector="addPlayer:" id="yof-BF-rFX"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title of Game" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUO-dA-vHu">
-                                <rect key="frame" x="16" y="111" width="361" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="titleTextFieldChanged:" destination="Ayx-TH-WLM" eventType="editingDidEnd" id="Eqg-hr-7kJ"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lZp-FR-bsM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tUO-dA-vHu" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" constant="16" id="1Hn-6N-vrg"/>
-                            <constraint firstItem="s6x-N4-nht" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="4iT-qM-fc8"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" id="D3E-Am-Z9F"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="top" secondItem="OuQ-Ao-xVU" secondAttribute="bottom" constant="8" symbolic="YES" id="D7O-BV-2K5"/>
+                            <constraint firstItem="rPJ-vY-DRZ" firstAttribute="leading" secondItem="s6x-N4-nht" secondAttribute="trailing" constant="31" id="DSR-Cz-2h7"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="leading" secondItem="1fQ-XG-SSU" secondAttribute="leading" id="FXv-ml-gyF"/>
                             <constraint firstItem="lZp-FR-bsM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KEc-dK-VjS" secondAttribute="trailing" symbolic="YES" id="M9h-IL-9eN"/>
                             <constraint firstItem="lZp-FR-bsM" firstAttribute="bottom" secondItem="s6x-N4-nht" secondAttribute="bottom" constant="11" id="OQc-0k-FY1"/>
+                            <constraint firstItem="lZp-FR-bsM" firstAttribute="trailing" secondItem="rPJ-vY-DRZ" secondAttribute="trailing" constant="36" id="QCG-LV-I9g"/>
                             <constraint firstItem="1fQ-XG-SSU" firstAttribute="leading" secondItem="lZp-FR-bsM" secondAttribute="leading" constant="16" id="RhO-a7-eDn"/>
                             <constraint firstItem="lZp-FR-bsM" firstAttribute="trailing" secondItem="tUO-dA-vHu" secondAttribute="trailing" constant="16" id="SY4-L5-4Co"/>
                             <constraint firstItem="s6x-N4-nht" firstAttribute="top" secondItem="Pyh-rJ-Rdb" secondAttribute="bottom" constant="14" id="VFQ-WO-E0A"/>
                             <constraint firstItem="OuQ-Ao-xVU" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="Xqw-lg-Xaa"/>
                             <constraint firstItem="Pyh-rJ-Rdb" firstAttribute="centerX" secondItem="Zbl-up-DGF" secondAttribute="centerX" id="bWz-WM-jYF"/>
                             <constraint firstItem="OkI-jE-Eks" firstAttribute="top" secondItem="KEc-dK-VjS" secondAttribute="bottom" constant="8" symbolic="YES" id="cLG-7g-4Sz"/>
+                            <constraint firstItem="lZp-FR-bsM" firstAttribute="bottom" secondItem="rPJ-vY-DRZ" secondAttribute="bottom" constant="11" id="dQK-69-HST"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="leading" secondItem="KEc-dK-VjS" secondAttribute="leading" id="e6Z-mH-B8j"/>
                             <constraint firstItem="tUO-dA-vHu" firstAttribute="top" secondItem="lZp-FR-bsM" secondAttribute="top" constant="8" id="f59-DH-ryk"/>
+                            <constraint firstItem="rPJ-vY-DRZ" firstAttribute="top" secondItem="Pyh-rJ-Rdb" secondAttribute="bottom" constant="14" id="f9K-1W-Qmi"/>
                             <constraint firstItem="dWj-wP-z3U" firstAttribute="top" secondItem="Zbl-up-DGF" secondAttribute="top" constant="234" id="fKW-2i-xMr"/>
                             <constraint firstItem="1fQ-XG-SSU" firstAttribute="top" secondItem="dWj-wP-z3U" secondAttribute="bottom" constant="8" symbolic="YES" id="oxp-cu-mg9"/>
                             <constraint firstItem="OuQ-Ao-xVU" firstAttribute="top" secondItem="1fQ-XG-SSU" secondAttribute="bottom" constant="27" id="pRr-sp-7ct"/>
@@ -302,6 +322,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPlayerButton" destination="s6x-N4-nht" id="K0V-sf-zzf"/>
+                        <outlet property="picturesButton" destination="rPJ-vY-DRZ" id="O2t-0r-Udf"/>
                         <outlet property="saveBarButton" destination="0aK-1L-INU" id="hbx-8b-PGr"/>
                         <outlet property="sortPlayersSegmentedControl" destination="OkI-jE-Eks" id="2De-GI-wUU"/>
                         <outlet property="tableView" destination="Pyh-rJ-Rdb" id="5ca-kC-RrH"/>
@@ -312,6 +333,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGz-ho-zag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945.80152671755718" y="-675.35211267605632"/>
+        </scene>
+        <!--Pictures!-->
+        <scene sceneID="RR9-qN-m2o">
+            <objects>
+                <collectionViewController id="ct6-GZ-0rf" customClass="PicturesCollectionViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="mYG-AQ-PPv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RXH-0w-59w">
+                            <size key="itemSize" width="389" height="339"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="picture" id="Ae2-Ed-b3c" customClass="PicturesCollectionViewCell" customModule="ScoreKeeper" customModuleProvider="target">
+                                <rect key="frame" x="2" y="0.0" width="389" height="339"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8za-of-ygH">
+                                    <rect key="frame" x="0.0" y="0.0" width="389" height="339"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4aN-eh-AZQ">
+                                            <rect key="frame" x="8" y="8" width="373" height="323"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="373" id="EaV-tK-99l"/>
+                                                <constraint firstAttribute="height" constant="323" id="xor-Ym-aS3"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4aN-eh-AZQ" firstAttribute="top" secondItem="8za-of-ygH" secondAttribute="top" constant="8" id="2Xj-Hc-dd9"/>
+                                        <constraint firstAttribute="trailing" secondItem="4aN-eh-AZQ" secondAttribute="trailing" constant="8" id="Dgd-gk-3Qw"/>
+                                        <constraint firstAttribute="bottom" secondItem="4aN-eh-AZQ" secondAttribute="bottom" constant="8" id="S7f-pE-Xel"/>
+                                        <constraint firstItem="4aN-eh-AZQ" firstAttribute="leading" secondItem="8za-of-ygH" secondAttribute="leading" constant="8" id="dJI-hc-qz0"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="389" height="339"/>
+                                <connections>
+                                    <outlet property="imageView" destination="4aN-eh-AZQ" id="iWI-cH-brX"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ct6-GZ-0rf" id="7lJ-Xl-n1J"/>
+                            <outlet property="delegate" destination="ct6-GZ-0rf" id="OJQ-Pp-RmC"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pictures!" id="AhB-XH-8ei">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="5CV-SU-OJP">
+                            <connections>
+                                <action selector="addPicture:" destination="ct6-GZ-0rf" id="fQQ-xA-NKi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jks-iA-zrk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809.9236641221373" y="-176.05633802816902"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NGy-Zm-aOs">
@@ -427,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-675"/>
+            <point key="canvasLocation" x="1811" y="-895"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

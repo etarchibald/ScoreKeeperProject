@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 var archiveURL = documentDirectory.appendingPathExtension("players").appendingPathExtension("json")
@@ -18,6 +19,7 @@ struct Game: Codable {
     var players: [Player]
     var areWeSortingByLargest: Bool
     var isLargestWinning: Bool
+    var picturesUrls: [GamePicture]
     
     static func saveGame(_ game: [Game]) {
             let propertyListEncoder = JSONEncoder()

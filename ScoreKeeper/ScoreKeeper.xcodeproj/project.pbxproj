@@ -20,6 +20,9 @@
 		4A661D352AF1465300381780 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A661D342AF1465300381780 /* Game.swift */; };
 		4A661D392AF1487E00381780 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A661D382AF1487E00381780 /* GameTableViewCell.swift */; };
 		4A661D3D2AF14F1400381780 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A661D3C2AF14F1400381780 /* GameDetailViewController.swift */; };
+		4AA96BBD2B03C57D000A7BB9 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */; };
+		4AA96BC22B03C800000A7BB9 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */; };
+		4AA96BC42B03D78C000A7BB9 /* GamePictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		4A661D342AF1465300381780 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		4A661D382AF1487E00381780 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		4A661D3C2AF14F1400381780 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
+		4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePictures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 				4A661D322AF143FA00381780 /* GamesTableViewController.swift */,
 				4A661D382AF1487E00381780 /* GameTableViewCell.swift */,
 				4A661D3C2AF14F1400381780 /* GameDetailViewController.swift */,
+				4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */,
+				4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */,
+				4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -175,13 +184,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AA96BBD2B03C57D000A7BB9 /* PicturesCollectionViewController.swift in Sources */,
 				4A661CD72AEBF64C00381780 /* ViewController.swift in Sources */,
+				4AA96BC22B03C800000A7BB9 /* PicturesCollectionViewCell.swift in Sources */,
 				4A661D3D2AF14F1400381780 /* GameDetailViewController.swift in Sources */,
 				4A661CD32AEBF64C00381780 /* AppDelegate.swift in Sources */,
 				4A661D392AF1487E00381780 /* GameTableViewCell.swift in Sources */,
 				4A661CE92AEBFB9200381780 /* PlayerScoreTableViewCell.swift in Sources */,
 				4A661CD52AEBF64C00381780 /* SceneDelegate.swift in Sources */,
 				4A661CEB2AEBFC2700381780 /* Player.swift in Sources */,
+				4AA96BC42B03D78C000A7BB9 /* GamePictures.swift in Sources */,
 				4A661D332AF143FA00381780 /* GamesTableViewController.swift in Sources */,
 				4A661CE72AEBFB1600381780 /* PlayerScoresTableViewController.swift in Sources */,
 				4A661D352AF1465300381780 /* Game.swift in Sources */,

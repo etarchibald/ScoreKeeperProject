@@ -18,6 +18,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var sortPlayersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var whoWinsSegmentedControl: UISegmentedControl!
     @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var picturesButton: UIButton!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
     var sortedPlayers = [Player]()
@@ -25,6 +26,8 @@ class GameDetailViewController: UIViewController {
     var greatestIsTheWinner = true
     var delegate: AddGameDelegate?
     var game: Game?
+    
+    var pictures = [GamePicture]()
     
     init?(coder: NSCoder, game: Game?) {
         self.game = game
@@ -43,6 +46,8 @@ class GameDetailViewController: UIViewController {
         
         sortingByLargest = game.areWeSortingByLargest
         greatestIsTheWinner = game.isLargestWinning
+        
+        pictures = game.picturesUrls
         
         sortPlayersSegmentedControl.selectedSegmentIndex = sortingByLargest ? 0 : 1
         
@@ -104,6 +109,10 @@ class GameDetailViewController: UIViewController {
         addPlayerButton.layer.borderColor = UIColor.black.cgColor
         addPlayerButton.layer.cornerRadius = 20
         
+        picturesButton.layer.borderWidth = 5
+        picturesButton.layer.borderColor = UIColor.black.cgColor
+        picturesButton.layer.cornerRadius = 20
+        
         updateSaveButtonState()
         
         updateView()
@@ -151,7 +160,7 @@ class GameDetailViewController: UIViewController {
             currentWinner = sortingByLargest ? sortedPlayers.last : sortedPlayers.first
         }
         
-        delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers, areWeSortingByLargest: sortingByLargest, isLargestWinning: greatestIsTheWinner))
+        delegate?.addGame(Game(title: title, currentWinner: currentWinner?.name ?? "Player", players: sortedPlayers, areWeSortingByLargest: sortingByLargest, isLargestWinning: greatestIsTheWinner, picturesUrls: pictures))
         
         self.navigationController?.popViewController(animated: true)
     }
@@ -166,6 +175,17 @@ class GameDetailViewController: UIViewController {
         let player = sortedPlayers[indexPath.row]
         
         return ViewController(coder: coder, player: player)
+    }
+    
+    @IBSegueAction func viewPictures(_ coder: NSCoder, sender: Any?) -> PicturesCollectionViewController? {
+        return PicturesCollectionViewController(pictures: pictures, coder: coder)
+    }
+    
+}
+
+extension GameDetailViewController: AddPictures {
+    func addPictures(pictures: [GamePicture]) {
+        self.pictures = pictures
     }
 }
 
@@ -203,8 +223,12 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let vc = segue.destination as? ViewController else { return }
-        vc.delegate = self
+        if let vc = segue.destination as? ViewController {
+            vc.delegate = self
+        }
+        if let pcvc = segue.destination as? PicturesCollectionViewController {
+            pcvc.delegate = self
+        }
     }
     
     func addPlayer(_ playerName: String, _ playerScore: Int) {
