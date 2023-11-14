@@ -53,6 +53,24 @@ class PicturesCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let picture = pictures[indexPath.item]
+        
+        let questionController = UIAlertController(title: "Delete Picture?", message: nil, preferredStyle: .alert)
+        questionController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+            self.pictures.remove(at: indexPath.item)
+            self.collectionView.deleteItems(at: [indexPath])
+            self.collectionView.reloadData()
+        }))
+        questionController.addAction(UIAlertAction(title: "Cancel", style: .default))
+        
+        present(questionController, animated: true)
+    }
 
     @IBAction func addPicture(_ sender: UIBarButtonItem) {
         let imageController = UIImagePickerController()

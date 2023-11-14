@@ -38,6 +38,28 @@ class GameDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
+        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
+        
+        addPlayerButton.layer.borderWidth = 5
+        addPlayerButton.layer.borderColor = UIColor.black.cgColor
+        addPlayerButton.layer.cornerRadius = 20
+        
+        picturesButton.layer.borderWidth = 5
+        picturesButton.layer.borderColor = UIColor.black.cgColor
+        picturesButton.layer.cornerRadius = 20
+        
+        updateSaveButtonState()
+        
+        updateView()
+
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     func updateView() {
         guard let game = game else { return }
         
@@ -97,28 +119,6 @@ class GameDetailViewController: UIViewController {
         } else {
             saveBarButton.isEnabled = true
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
-        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
-        
-        addPlayerButton.layer.borderWidth = 5
-        addPlayerButton.layer.borderColor = UIColor.black.cgColor
-        addPlayerButton.layer.cornerRadius = 20
-        
-        picturesButton.layer.borderWidth = 5
-        picturesButton.layer.borderColor = UIColor.black.cgColor
-        picturesButton.layer.cornerRadius = 20
-        
-        updateSaveButtonState()
-        
-        updateView()
-
-        tableView.dataSource = self
-        tableView.delegate = self
     }
     
     @IBAction func titleTextFieldChanged(_ sender: UITextField) {
