@@ -22,7 +22,7 @@ class PicturesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
+        collectionView.backgroundView = UIImageView(image: UIImage(named: "paper"))
         
 //        trashButton.isEnabled = false
         
@@ -51,6 +51,9 @@ class PicturesCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath) as? PicturesCollectionViewCell else { fatalError("Unable to dequeue PicturesCell")}
         
         let picture = pictures[indexPath.row]
+        
+        cell.imageView.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 15
         
         let path = getDocumentsDirectory().appendingPathExtension(picture.picture)
         cell.imageView.image = UIImage(contentsOfFile: path.path)

@@ -41,16 +41,16 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
-        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        tableView.backgroundView = UIImageView(image: UIImage(named: "paper"))
         
-        addPlayerButton.layer.borderWidth = 5
+        addPlayerButton.layer.borderWidth = 3
         addPlayerButton.layer.borderColor = UIColor.black.cgColor
-        addPlayerButton.layer.cornerRadius = 20
+        addPlayerButton.layer.cornerRadius = 15
         
-        picturesButton.layer.borderWidth = 5
+        picturesButton.layer.borderWidth = 3
         picturesButton.layer.borderColor = UIColor.black.cgColor
-        picturesButton.layer.cornerRadius = 20
+        picturesButton.layer.cornerRadius = 15
         
         updateSaveButtonState()
         
@@ -200,9 +200,9 @@ extension GameDetailViewController: UITableViewDataSource, UITableViewDelegate, 
         
         cell.delegate = self
         
-        cell.layer.borderWidth = 5
+        cell.layer.borderWidth = 3
         cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.cornerRadius = 40
+        cell.layer.cornerRadius = 30
         
         let player = sortedPlayers[indexPath.row]
         

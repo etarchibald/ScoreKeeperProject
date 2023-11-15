@@ -18,7 +18,7 @@ class GamesTableViewController: UITableViewController {
         
         games = Game.LoadFromFiles()
         
-        tableView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
+        tableView.backgroundView = UIImageView(image: UIImage(named: "paper"))
         
     }
 
@@ -45,9 +45,9 @@ class GamesTableViewController: UITableViewController {
 
         let game = games[indexPath.row]
         
-        cell.layer.borderWidth = 5
+        cell.layer.borderWidth = 3
         cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.cornerRadius = 40
+        cell.layer.cornerRadius = 30
         
         cell.update(with: game)
 

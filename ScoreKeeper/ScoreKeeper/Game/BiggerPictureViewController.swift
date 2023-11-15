@@ -17,12 +17,13 @@ class BiggerPictureViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
         imageView.backgroundColor = .black
         
         imageView.layer.borderWidth = 10
         imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.cornerRadius = 30
         
         mainScrollView.delegate = self
         
