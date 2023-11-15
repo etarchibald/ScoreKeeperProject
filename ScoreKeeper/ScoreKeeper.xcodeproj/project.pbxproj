@@ -23,6 +23,7 @@
 		4AA96BBD2B03C57D000A7BB9 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */; };
 		4AA96BC22B03C800000A7BB9 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */; };
 		4AA96BC42B03D78C000A7BB9 /* GamePictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */; };
+		4AA96BC62B051C02000A7BB9 /* BiggerPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA96BC52B051C02000A7BB9 /* BiggerPictureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
 		4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePictures.swift; sourceTree = "<group>"; };
+		4AA96BC52B051C02000A7BB9 /* BiggerPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiggerPictureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				4AA96BBC2B03C57D000A7BB9 /* PicturesCollectionViewController.swift */,
 				4AA96BC32B03D78C000A7BB9 /* GamePictures.swift */,
 				4AA96BC12B03C800000A7BB9 /* PicturesCollectionViewCell.swift */,
+				4AA96BC52B051C02000A7BB9 /* BiggerPictureViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				4A661CEB2AEBFC2700381780 /* Player.swift in Sources */,
 				4AA96BC42B03D78C000A7BB9 /* GamePictures.swift in Sources */,
 				4A661D332AF143FA00381780 /* GamesTableViewController.swift in Sources */,
+				4AA96BC62B051C02000A7BB9 /* BiggerPictureViewController.swift in Sources */,
 				4A661CE72AEBFB1600381780 /* PlayerScoresTableViewController.swift in Sources */,
 				4A661D352AF1465300381780 /* Game.swift in Sources */,
 			);

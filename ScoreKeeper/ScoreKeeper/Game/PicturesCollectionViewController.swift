@@ -13,6 +13,8 @@ protocol AddPictures {
 
 class PicturesCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var trashButton: UIBarButtonItem!
+    
     var pictures = [GamePicture]()
     
     var delegate: AddPictures?
@@ -22,12 +24,14 @@ class PicturesCollectionViewController: UICollectionViewController {
 
         collectionView.backgroundView = UIImageView(image: UIImage(named: "newestGame"))
         
+//        trashButton.isEnabled = false
+        
         collectionView.reloadData()
     }
     
     init?(pictures: [GamePicture], coder: NSCoder) {
-        super.init(coder: coder)
         self.pictures = pictures
+        super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) {
@@ -54,24 +58,29 @@ class PicturesCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
-        return true
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if trashButton.isSelected {
+            BiggerPictureViewController.picture = pictures[indexPath.row]
+            let questionController = UIAlertController(title: "Delete Picture?", message: nil, preferredStyle: .alert)
+            questionController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
+                self.pictures.remove(at: indexPath.item)
+                self.collectionView.deleteItems(at: [indexPath])
+                self.collectionView.reloadData()
+                self.navigationController?.popViewController(animated: true)
+            }))
+            questionController.addAction(UIAlertAction(title: "Cancel", style: .default))
+            
+            present(questionController, animated: true)
+        } else {
+            BiggerPictureViewController.picture = pictures[indexPath.row]
+        }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let picture = pictures[indexPath.item]
-        
-        let questionController = UIAlertController(title: "Delete Picture?", message: nil, preferredStyle: .alert)
-        questionController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in
-            self.pictures.remove(at: indexPath.item)
-            self.collectionView.deleteItems(at: [indexPath])
-            self.collectionView.reloadData()
-        }))
-        questionController.addAction(UIAlertAction(title: "Cancel", style: .default))
-        
-        present(questionController, animated: true)
+    @IBAction func trashButtonTapped(_ sender: UIBarButtonItem) {
+        trashButton.isSelected.toggle()
     }
-
+    
     @IBAction func addPicture(_ sender: UIBarButtonItem) {
         let imageController = UIImagePickerController()
         imageController.delegate = self
@@ -98,6 +107,7 @@ class PicturesCollectionViewController: UICollectionViewController {
         
         present(alertController, animated: true)
     }
+    
 }
 
 extension PicturesCollectionViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {

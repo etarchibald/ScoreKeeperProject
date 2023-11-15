@@ -375,6 +375,7 @@
                                 <size key="customSize" width="389" height="339"/>
                                 <connections>
                                     <outlet property="imageView" destination="4aN-eh-AZQ" id="iWI-cH-brX"/>
+                                    <segue destination="SUn-tM-8VM" kind="show" id="o4R-Pv-cR3"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -384,16 +385,75 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Pictures!" id="AhB-XH-8ei">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="5CV-SU-OJP">
-                            <connections>
-                                <action selector="addPicture:" destination="ct6-GZ-0rf" id="fQQ-xA-NKi"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="camera" id="5CV-SU-OJP">
+                                <connections>
+                                    <action selector="addPicture:" destination="ct6-GZ-0rf" id="fQQ-xA-NKi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="XwW-cm-Kar">
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <action selector="trashButtonTapped:" destination="ct6-GZ-0rf" id="hWG-v4-rjT"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="trashButton" destination="XwW-cm-Kar" id="405-xh-qq2"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jks-iA-zrk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1809.9236641221373" y="-176.05633802816902"/>
+        </scene>
+        <!--Zoom In to proove your right!-->
+        <scene sceneID="CAA-QZ-0A4">
+            <objects>
+                <viewController id="SUn-tM-8VM" customClass="BiggerPictureViewController" customModule="ScoreKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sQP-RG-r1q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a40-Py-UUi">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKa-RA-ncW">
+                                        <rect key="frame" x="0.0" y="0.0" width="1824" height="1216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1216" id="6pQ-d2-IvY"/>
+                                            <constraint firstAttribute="width" constant="1824" id="UMG-RJ-VXu"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tKa-RA-ncW" firstAttribute="leading" secondItem="6el-GS-5z2" secondAttribute="leading" id="Gs6-HK-VAB"/>
+                                    <constraint firstItem="tKa-RA-ncW" firstAttribute="top" secondItem="6el-GS-5z2" secondAttribute="top" id="SfO-wh-TxM"/>
+                                    <constraint firstItem="tKa-RA-ncW" firstAttribute="bottom" secondItem="6el-GS-5z2" secondAttribute="bottom" constant="1216" id="ZrI-hs-sUq"/>
+                                    <constraint firstItem="tKa-RA-ncW" firstAttribute="trailing" secondItem="6el-GS-5z2" secondAttribute="trailing" constant="1824" id="neb-72-p1v"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="6el-GS-5z2"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="VSc-pK-poE"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Q0z-xA-j2x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a40-Py-UUi" firstAttribute="top" secondItem="Q0z-xA-j2x" secondAttribute="top" id="THZ-bD-Ii6"/>
+                            <constraint firstItem="a40-Py-UUi" firstAttribute="bottom" secondItem="Q0z-xA-j2x" secondAttribute="bottom" id="fWa-JR-byP"/>
+                            <constraint firstItem="a40-Py-UUi" firstAttribute="trailing" secondItem="Q0z-xA-j2x" secondAttribute="trailing" id="ldY-dJ-fur"/>
+                            <constraint firstItem="a40-Py-UUi" firstAttribute="leading" secondItem="Q0z-xA-j2x" secondAttribute="leading" id="ypi-jw-4HD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Zoom In to proove your right!" id="bGV-3u-Uyt"/>
+                    <connections>
+                        <outlet property="imageView" destination="tKa-RA-ncW" id="tqP-kP-8n4"/>
+                        <outlet property="mainScrollView" destination="a40-Py-UUi" id="Z3c-3G-CQi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jd-Up-UYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2788.5496183206105" y="-176.05633802816902"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NGy-Zm-aOs">
@@ -520,6 +580,9 @@
         <image name="dice.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
