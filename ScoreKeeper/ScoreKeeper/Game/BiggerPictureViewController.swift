@@ -17,7 +17,7 @@ class BiggerPictureViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "pxfuel")!)
         
         imageView.backgroundColor = .black
         

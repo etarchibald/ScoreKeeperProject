@@ -34,8 +34,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "newestGame")!)
-        
         savePlayerButton.layer.borderWidth = 5
         savePlayerButton.layer.borderColor = UIColor.black.cgColor
         savePlayerButton.layer.cornerRadius = 20

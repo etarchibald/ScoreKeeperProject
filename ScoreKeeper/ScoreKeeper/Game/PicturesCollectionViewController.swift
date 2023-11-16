@@ -22,7 +22,7 @@ class PicturesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundView = UIImageView(image: UIImage(named: "paper"))
+        collectionView.backgroundView = UIImageView(image: UIImage(named: "pxfuel"))
         
 //        trashButton.isEnabled = false
         
